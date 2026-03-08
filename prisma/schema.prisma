@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  USER
+  PROVIDER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  ACCEPTED
+  COMPLETED
+  CANCELLED
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+
+  providerProfile ProviderProfile?
+  bookings        Booking[] @relation("UserBookings")
+  reviews         Review[]
+}
+
+model ProviderProfile {
+  id          String  @id @default(uuid())
+  userId      String  @unique
+  categoryId  String?
+  description String?
+  experience  Int?
+  rating      Float   @default(0)
+
+  isAvailable Boolean @default(true)
+  isApproved  Boolean @default(false)
+
+  user       User             @relation(fields: [userId], references: [id])
+  category   ServiceCategory? @relation(fields: [categoryId], references: [id])
+  bookings   Booking[]
+  reviews    Review[]
+}
+
+model ServiceCategory {
+  id          String  @id @default(uuid())
+  name        String  @unique
+  description String?
+
+  providers ProviderProfile[]
+  bookings  Booking[]
+}
+
+
+model Booking {
+  id          String        @id @default(uuid())
+  userId      String
+  providerId  String
+  categoryId  String
+  address     String
+  date        DateTime
+  status      BookingStatus @default(PENDING)
+  createdAt   DateTime      @default(now())
+
+  user     User            @relation("UserBookings", fields: [userId], references: [id])
+  provider ProviderProfile @relation(fields: [providerId], references: [id])
+  category ServiceCategory @relation(fields: [categoryId], references: [id])
+}
+
+model Review {
+  id         String   @id @default(uuid())
+  userId     String
+  providerId String
+  rating     Int
+  comment    String?
+  createdAt  DateTime @default(now())
+
+  user     User            @relation(fields: [userId], references: [id])
+  provider ProviderProfile @relation(fields: [providerId], references: [id])
+}

@@ -1,0 +1,42 @@
+.providers-container{
+padding:40px;
+}
+
+.providers-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.provider-card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.provider-card h3{
+margin-bottom:10px;
+}
+
+.service{
+font-weight:bold;
+color:#4f46e5;
+margin-bottom:10px;
+}
+
+.exp{
+font-size:14px;
+color:#666;
+margin:10px 0;
+}
+
+.provider-card button{
+padding:8px 14px;
+background:#4f46e5;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}

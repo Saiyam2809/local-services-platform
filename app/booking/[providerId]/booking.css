@@ -1,0 +1,94 @@
+.booking-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 40px;
+}
+
+.booking-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.booking-card {
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking-card input,
+.booking-card textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.booking-card textarea {
+  min-height: 80px;
+}
+
+.booking-card button {
+  padding: 12px;
+  border: none;
+  background: #0070f3;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.booking-card button:hover {
+  background: #005bd1;
+}
+
+.booking-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background:#f5f7fb;
+}
+
+.booking-card{
+  background:white;
+  padding:30px;
+  border-radius:12px;
+  width:400px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.booking-card label{
+  font-weight:600;
+}
+
+.booking-card input{
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:6px;
+}
+
+.booking-card textarea{
+  padding:10px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  min-height:100px;
+  resize:none;
+}
+
+.booking-card button{
+  margin-top:10px;
+  background:#4f46e5;
+  color:white;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.booking-card button:hover{
+  background:#4338ca;
+}

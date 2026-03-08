@@ -1,0 +1,27 @@
+.reviews-container{
+padding:40px;
+background:#f4f6fb;
+min-height:100vh;
+}
+
+.review-card{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.review-card p{
+margin-bottom:6px;
+}
+
+.delete-btn{
+margin-top:10px;
+background:#dc2626;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
