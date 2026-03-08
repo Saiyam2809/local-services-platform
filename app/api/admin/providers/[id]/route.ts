@@ -3,15 +3,31 @@ import { NextResponse } from "next/server";
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
 
-  const provider = await prisma.providerProfile.update({
-    where: { id: params.id },
-    data: {
-      isApproved: true
-    }
-  });
+  try {
 
-  return NextResponse.json(provider);
+    const { id } = await context.params;
+
+    const provider = await prisma.providerProfile.update({
+      where: { id },
+      data: {
+        isApproved: true
+      }
+    });
+
+    return NextResponse.json(provider);
+
+  } catch (error) {
+
+    console.error(error);
+
+    return NextResponse.json(
+      { error: "Failed to approve provider" },
+      { status: 500 }
+    );
+
+  }
+
 }

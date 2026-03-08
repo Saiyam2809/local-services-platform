@@ -34,7 +34,7 @@ fetchCategories();
 
 };
 
-const deleteCategory = async(id)=>{
+const deleteCategory = async(id: string)=>{
 
 await fetch(`/api/admin/categories/${id}`,{
   method:"DELETE"

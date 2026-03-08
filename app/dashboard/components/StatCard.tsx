@@ -1,4 +1,4 @@
-export default function StatCard({ title, value }) {
+export default function StatCard({ title, value }: { title: string; value: string }) {
   return (
     <div className="stat-card">
 

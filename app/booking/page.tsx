@@ -2,9 +2,20 @@
 
 import { useEffect, useState } from "react";
 
+interface Booking {
+    id: string;
+    date: string;
+    status: string;
+    provider: {
+        user: {
+            name: string;
+        };
+    };
+}
+
 export default function BookingsPage() {
 
-    const [bookings, setBookings] = useState([]);
+    const [bookings, setBookings] = useState<Booking[]>([]);
 
     useEffect(() => {
 

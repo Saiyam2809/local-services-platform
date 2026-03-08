@@ -9,10 +9,12 @@ export async function PATCH(
 
     const { status } = await req.json();
 
-    const { id } = await context.params; // ✅ FIX
+    const { id } = await context.params; // Required in Next.js 15+
 
     const booking = await prisma.booking.update({
-      where: { id },
+      where: {
+        id
+      },
       data: {
         status
       }
@@ -28,5 +30,6 @@ export async function PATCH(
       { error: "Failed to update booking" },
       { status: 500 }
     );
+
   }
 }

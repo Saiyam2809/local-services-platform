@@ -2,13 +2,29 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function DELETE(
- req:Request,
- {params}:{params:{id:string}}
-){
+  req: Request,
+  context: { params: Promise<{ id: string }> }
+) {
+  try {
 
- await prisma.review.delete({
-  where:{id:params.id}
- });
+    const { id } = await context.params;
 
- return NextResponse.json({success:true});
+    await prisma.review.delete({
+      where: { id }
+    });
+
+    return NextResponse.json({
+      message: "Review deleted successfully"
+    });
+
+  } catch (error) {
+
+    console.error(error);
+
+    return NextResponse.json(
+      { error: "Failed to delete review" },
+      { status: 500 }
+    );
+
+  }
 }

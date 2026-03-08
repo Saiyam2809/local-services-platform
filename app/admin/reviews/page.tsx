@@ -19,7 +19,7 @@ useEffect(()=>{
 })();
 },[]);
 
-const deleteReview = async(id)=>{
+const deleteReview = async(id: string)=>{
 
 await fetch(`/api/admin/reviews/${id}`,{
 method:"DELETE"

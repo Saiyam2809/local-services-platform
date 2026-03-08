@@ -229,11 +229,11 @@ setAvailable(data.isAvailable);
 
           {/* Confirmed */}
 
-          {b.status === "CONFIRMED" && (
-            <button onClick={() => updateStatus(b.id, "IN_PROGRESS")}>
-              Start Job
-            </button>
-          )}
+          {b.status === "ACCEPTED" && (
+  <button onClick={() => updateStatus(b.id, "IN_PROGRESS")}>
+    Start Job
+  </button>
+)}
 
           {/* In Progress */}
 
